@@ -1,0 +1,22 @@
+{
+  "name": "wrodCloud-frontEnd",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "build": "cross-env NODE_ENv=production webpack -p"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-react-app": "^10.0.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
