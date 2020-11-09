@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link as RouterLink } from "react-router-dom";
+import Link from "@material-ui/core/Link";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Drawer from "@material-ui/core/Drawer";
@@ -15,7 +17,7 @@ const styles = {
   },
 };
 
-class AppShell extends Component {
+class AppShell extends React.Component {
   constructor(props) {
     super(props);
 
@@ -35,19 +37,38 @@ class AppShell extends Component {
     const { drawerToggle } = this.state;
 
     return (
-      <div className={classes.root}>
-        <AppBar>
-          <IconButton
-            className={classes.menuButton}
-            color="inherit"
-            onClick={this._drawerToggleHandler}
-          >
-            <MenuIcon />
-          </IconButton>
-        </AppBar>
-        <Drawer open={drawerToggle}>
-          <MenuItem onClick={this._drawerToggleHandler}>HOME</MenuItem>
-        </Drawer>
+      <div>
+        <div className={classes.root}>
+          <AppBar>
+            <IconButton
+              className={classes.menuButton}
+              color="inherit"
+              onClick={this._drawerToggleHandler}
+            >
+              <MenuIcon />
+            </IconButton>
+          </AppBar>
+          <Drawer open={drawerToggle}>
+            <MenuItem onClick={this._drawerToggleHandler}>
+              <Link component={RouterLink} to="/">
+                Home
+              </Link>
+            </MenuItem>
+            <MenuItem onClick={this._drawerToggleHandler}>
+              <Link component={RouterLink} to="/text">
+                Text
+              </Link>
+            </MenuItem>
+            <MenuItem onClick={this._drawerToggleHandler}>
+              <Link component={RouterLink} to="/word">
+                Words
+              </Link>
+            </MenuItem>
+          </Drawer>
+        </div>
+        <div id="content" style={{ margin: `auto`, marginTop: `70px` }}>
+          {React.cloneElement(this.props.children)}
+        </div>
       </div>
     );
   }
